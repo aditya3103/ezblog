@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "306144619621",
+    "project_id": "ezblog-e46a4",
+    "storage_bucket": "ezblog-e46a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306144619621:android:167b4d1b0789435fb5ea8c",
+        "android_client_info": {
+          "package_name": "com.example.ezblog"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcCuoR3JUIbhof1ks2IQEvljYKzX8URAc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
