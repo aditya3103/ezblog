@@ -208,6 +208,7 @@ class _NewBlogState extends State<NewBlog> {
     if (user != null) {
       // Get the user's UID (user ID)
       String userId = user.uid;
+      String userName = user.displayName ?? 'Anonymous';
 
       // Get the current date and time
       DateTime currentDate = DateTime.now();
@@ -231,7 +232,8 @@ class _NewBlogState extends State<NewBlog> {
 
           // Add the blog post data to the document
           await blogRef.set({
-            'author': userId,
+            'userid': userId,
+            'author': userName,
             'category': selectedGenre,
             'content': content,
             'isFree': !isPaid,

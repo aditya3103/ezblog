@@ -6,6 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:ezblog/homepage.dart';
 import 'package:ezblog/createpage.dart';
+// import 'package:ezblog/savedblogs.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,6 +43,7 @@ class _MyApp extends State<MyApp> {
           }),
         ],
       ),
+      // SavedBlogs(),
     ];
     return MaterialApp(
       initialRoute:
@@ -68,9 +70,12 @@ class _MyApp extends State<MyApp> {
         '/home': (context) => Scaffold(
               appBar: AppBar(
                 title: Text('EzBlog'),
+                backgroundColor: Colors.black,
               ),
               bottomNavigationBar: BottomNavigationBar(
-                backgroundColor: Colors.blue,
+                backgroundColor: Colors.black,
+                selectedItemColor: Colors.white,
+                unselectedItemColor: Colors.grey,
                 onTap: (index) {
                   setState(() {
                     myindex = index;
@@ -90,8 +95,12 @@ class _MyApp extends State<MyApp> {
                     icon: Icon(Icons.account_circle),
                     label: 'Profile',
                   ),
+                  // BottomNavigationBarItem(
+                  //   icon: Icon(Icons.account_circle),
+                  //   label: 'Saved',
+                  // ),
                 ],
-                selectedItemColor: Colors.blue[900],
+                // selectedItemColor: Colors.black,
               ),
               body: Center(child: widgetList[myindex]),
             )
