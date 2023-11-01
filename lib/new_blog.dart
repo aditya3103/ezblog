@@ -227,16 +227,16 @@ class _NewBlogState extends State<NewBlog> {
           // });
 
           DocumentReference blogRef =
-              FirebaseFirestore.instance.collection('newBlogs').doc();
+              FirebaseFirestore.instance.collection('blogs').doc();
 
           // Add the blog post data to the document
           await blogRef.set({
-            'userId': userId,
-            'date': currentDate,
-            'genre': selectedGenre,
-            'isPaid': isPaid,
-            'title': heading,
+            'author': userId,
+            'category': selectedGenre,
             'content': content,
+            'isFree': !isPaid,
+            'postedAt': currentDate,
+            'title': heading,
           });
 
           //debug msgs to print all the data
