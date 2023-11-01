@@ -4,8 +4,8 @@ import 'package:firebase_ui_oauth_google/firebase_ui_oauth_google.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'new_blog.dart';
 import 'package:ezblog/homepage.dart';
+import 'package:ezblog/createpage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +33,8 @@ class _MyApp extends State<MyApp> {
   Widget build(BuildContext context) {
     List<Widget> widgetList = [
       HomePage(),
-      Text('Create', style: TextStyle(fontSize: 40)),
+      // Text('Create', style: TextStyle(fontSize: 40)),
+      CreatePage(),
       ProfileScreen(
         actions: [
           SignedOutAction((context) {
@@ -61,9 +62,9 @@ class _MyApp extends State<MyApp> {
                 }),
               ],
             ),
-        '/create': (context) => Scaffold(
-              body: NewBlog(), // Use your NewBlog widget here
-            ),
+        // '/create': (context) => Scaffold(
+        //       body: NewBlog(), // Use your NewBlog widget here
+        //     ),
         '/home': (context) => Scaffold(
               appBar: AppBar(
                 title: Text('EzBlog'),
