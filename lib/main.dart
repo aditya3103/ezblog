@@ -4,6 +4,7 @@ import 'package:firebase_ui_oauth_google/firebase_ui_oauth_google.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'new_blog.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,6 +50,7 @@ class _MyApp extends State<MyApp> {
               appBar: AppBar(
                 title: Text('EzBlog'),
               ),
+            body: NewBlog(), // Use your NewBlog widget here
               bottomNavigationBar: BottomNavigationBar(
                 backgroundColor: Colors.blue,
                 onTap: (index){
