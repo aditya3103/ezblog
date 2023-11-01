@@ -1,0 +1,113 @@
+class _NewBlogState extends State<NewBlog> {
+  String heading = ''; // Store the heading
+  String content = ''; // Store the content
+
+  // ...
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(
+            50.0, // Add padding around the entire component
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Container(
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    hintText: 'Type out a heading...',
+                    contentPadding: const EdgeInsets.all(8.0),
+                  ),
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontFamily: 'Charter',
+                  ),
+                  maxLines: 1, // Single line
+                  onChanged: (value) {
+                    // Update the heading when the user types
+                    setState(() {
+                      heading = value;
+                    });
+                  },
+                ),
+              ),
+              SizedBox(height: 16.0),
+              // ...
+              TextFormField(
+                controller: contentController,
+                maxLines: 12,
+                style: TextStyle(
+                  fontSize: 32,
+                  fontFamily: 'Charter',
+                ),
+                decoration: InputDecoration(
+                  hintText: 'Start typing...',
+                  contentPadding: const EdgeInsets.all(8.0),
+                ),
+                onChanged: (value) {
+                  // Update the content when the user types
+                  setState(() {
+                    content = value;
+                  });
+                },
+              ),
+              // ...
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: Stack(
+        children: [
+          Positioned(
+            top: 30,
+            right: 30,
+            child: Container(
+              width: 100,
+              height: 30,
+              child: FloatingActionButton.extended(
+                onPressed: () {
+                  // Use the 'heading' and 'content' variables in your saveBlogPost function
+                  saveBlogPost();
+                },
+                label: Text('Publish',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontFamily: 'Charter')),
+                backgroundColor: Colors.blue,
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // ...
+
+  Future<void> saveBlogPost() async {
+    // Now you can use the 'heading' and 'content' variables to save the data to Firebase or perform any other actions you need.
+    // For example, to save data to Firebase Firestore:
+    try {
+      final firebaseInstance = await FirebaseFirestore.instance;
+      await firebaseInstance.collection('blog_posts').add({
+        'heading': heading,
+        'content': content,
+        'genre': selectedGenre,
+        'isPaid': isPaid,
+        'timestamp': FieldValue.serverTimestamp(),
+      });
+      // Data has been successfully saved to Firestore
+    } catch (e) {
+      // Handle any errors that might occur
+      print('Error: $e');
+    }
+  }
+}

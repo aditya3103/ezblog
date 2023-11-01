@@ -16,8 +16,8 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget{
-  const MyApp ({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyApp();
@@ -46,39 +46,38 @@ class _MyApp extends State<MyApp> {
                 }),
               ],
             ),
+        '/create': (context) => Scaffold(
+              body: NewBlog(), // Use your NewBlog widget here
+            ),
         '/home': (context) => Scaffold(
-              appBar: AppBar(
-                title: Text('EzBlog'),
-              ),
-            body: NewBlog(), // Use your NewBlog widget here
-              bottomNavigationBar: BottomNavigationBar(
-                backgroundColor: Colors.blue,
-                onTap: (index){
-                  setState(() {
-                    myindex = index;
-                  });
-                },
-                currentIndex: myindex,
-                items: const <BottomNavigationBarItem>[
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.home),
-                    label: 'Home',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.add),
-                    label: 'Create',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.account_circle),
-                    label: 'Profile',
-                  ),
-                ],
-                selectedItemColor: Colors.blue[900],
-              )
-            )
+            appBar: AppBar(
+              title: Text('EzBlog'),
+            ),
+            bottomNavigationBar: BottomNavigationBar(
+              backgroundColor: Colors.blue,
+              onTap: (index) {
+                setState(() {
+                  myindex = index;
+                });
+              },
+              currentIndex: myindex,
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.add),
+                  label: 'Create',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.account_circle),
+                  label: 'Profile',
+                ),
+              ],
+              selectedItemColor: Colors.blue[900],
+            ))
       },
     );
   }
-
-
 }
